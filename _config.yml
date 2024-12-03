@@ -87,7 +87,7 @@ cover_image                               : #assets/headerimage.png             
 cover_overlay_color                       : "#0096FF"
 cover_overlay_transparency                : 0.6
 
-device_color                              : white                                     # Set to: blue, black, yellow, coral or white.
+device_color                              : iphone16promax                             # Set to: blue, black, yellow, coral or white.
 
 body_background_color                     : "#ffffff"
 
