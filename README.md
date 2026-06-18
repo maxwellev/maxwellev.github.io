@@ -1,113 +1,370 @@
-# Automatic App Landing Page
-**Create and deploy an iOS app landing page on GitHub Pages in only five minutes.**
+# Portafolio Profesional de Apps iOS — GitHub Pages
 
-Designed for GitHub Pages for super easy set up. 
+Un sitio web completo, moderno y escalable para mostrar tus aplicaciones iOS. Incluye:
 
-🔧 Fork this repo
+- 🏠 **Página principal** con portafolio de apps
+- 📄 **Página individual por app** con carrusel de screenshots
+- 🔐 **Política de privacidad** lista para App Store
+- 🎨 **Diseño moderno** sin frameworks pesados
+- 📱 **100% responsive** y accesible
+- ⚡ **Sistema dinámico** — agregar apps sin crear HTML
 
-🗝 Enter iOS App ID in `_config.yml`
+## Características Principales
 
-📲 Upload video preview or screenshot
+- ✨ Diseño limpio inspirado en iOS
+- 📸 Carrusel de capturas de pantalla con navegación completa
+- 📋 Características, especificaciones y tecnologías por app
+- 🔗 Enlaces directos al App Store
+- 📄 Política de privacidad completa y personalizable
+- 🌗 Dark mode automático
+- ♿ Accesible (teclado, screen readers)
+- 🎯 Variables CSS centralizadas para fácil personalización
+- 📊 Sin dependencias externas, solo HTML/CSS/JS puro
 
-🎨 Customise site in `_config.yml` (no HTML/CSS)
+## Estructura de Archivos
 
-📝 Write Privacy Policy as markdown in `privacypolicy.md`
+```
+├── index.html              # Portafolio principal
+├── app-detail.html         # Página dinámica de detalles (parámetro: ?id=)
+├── privacy-policy.html     # Política de privacidad
+├── styles.css              # Todos los estilos (CSS centralizado)
+├── data.js                 # ⭐ Definición de apps (editá aquí)
+├── script.js               # JS para portafolio principal
+├── app-detail.js           # JS para página de detalles
+├── README.md               # Este archivo
+└── .gitignore              # Ignorar archivos locales
+```
 
-🕒 Keep a changelog in `CHANGELOG.md`
+## Configuración Rápida
 
-✅ Site becomes live at GitHub Pages repository URL, e.g. `https://your-username.github.io/your-repo-name/`.
+### 1. Crear Repositorio en GitHub
 
-<img src="https://emilbaehr.com/files/jayson1.png" width="440"> <img src="https://emilbaehr.com/files/slor1.png" width="440">
+```bash
+git init
+git add .
+git commit -m "Initial portfolio commit"
+git remote add origin https://github.com/tu-usuario/mi-portafolio-ios.git
+git branch -M main
+git push -u origin main
+```
 
+### 2. Activar GitHub Pages
 
+1. Ve a tu repositorio → **Settings** → **Pages**
+2. Bajo "Build and deployment":
+   - Source: `Deploy from a branch`
+   - Branch: `main`
+   - Folder: `/ (root)`
+3. Guarda los cambios
 
+**Tu sitio estará en:** `https://tu-usuario.github.io/mi-portafolio-ios`
 
-## Quick Start
+---
 
-### Step 1: Fork this repo.
-After forking the repo, your site will be live immediately on your personal Github Pages account, e.g. `https://yourusername.github.io/your-repo-name/`.
+## Cómo Agregar Apps
 
-*Make sure GitHub Pages is enabled for your repo. It might take some time for the site to propagate entirely.*
+**Todo se define en `data.js`** — No necesitas crear HTML nuevo.
 
+### Estructura de una App
 
+```javascript
+{
+    id: 'recarga-ev',                        // URL-friendly ID
+    name: 'Recarga EV',                      // Nombre visible
+    icon: '⚡',                              // Emoji o símbolo
+    category: 'Utilidad',                    // Categoría
+    description: 'Rastrea sesiones...',      // Descripción corta
+    tags: ['SwiftUI', 'SwiftData'],          // Tags de features
+    
+    // Detalles de página individual
+    fullDescription: 'Descripción larga...',
+    features: [                              // Características principales
+        {
+            title: 'Feature 1',
+            description: 'Descripción...'
+        }
+    ],
+    screenshots: [                           // Carrusel de imágenes
+        {
+            url: 'https://via.placeholder.com/540x1170',
+            caption: 'Screenshot caption'
+        }
+    ],
+    appStoreUrl: 'https://apps.apple.com/...',
+    version: '1.0',
+    requirements: 'iOS 17.0 o posterior',
+    releaseDate: 'Enero 2024',
+    price: 'Gratis',
+    technologies: ['SwiftUI', 'SwiftData', 'CloudKit']
+}
+```
 
-### Step 2: Enter iOS App ID in `_config.yml`
-Enter your iOS app ID in the `ios_app_id` field and commit your changes. Your site will automatically rebuild with your app icon, name, price and link to App Store.
+### Ejemplo: Agregar una Segunda App
 
-You can go on with customising almost anything in the `_config.yml` file. 
+En `data.js`, descomenta y personaliza:
 
-Things you can customise in `_config.yml`:
-- App Name
-- App Icon
-- App Description
-- App Price
-- App Store Link
-- Play Store Link
-- Press Kit Download Link
-- Cover Image
-- Cover Overlay Color
-- Background Color
-- Text Colors
-- iPhone Device Color
-- Your Name / Company Name
-- Link to Website
-- Social Links and Contact Info
-- Feature List (Title, text, icon)
+```javascript
+const apps = [
+    // App 1 (ya existe)
+    {
+        id: 'recarga-ev',
+        // ...
+    },
+    // App 2 (nueva)
+    {
+        id: 'mi-nueva-app',
+        name: 'Mi Nueva App',
+        icon: '🎯',
+        category: 'Productividad',
+        description: 'Tu descripción aquí...',
+        // ... resto de propiedades
+    }
+];
+```
 
+**Automáticamente:**
+- Aparecerá en el portafolio (`index.html`)
+- Tendrá su página de detalles (`app-detail.html?id=mi-nueva-app`)
+- Se linkearán las apps relacionadas
 
+---
 
-### Step 3: Add screenshot or video
+## Personalización
 
-#### Adding a screenshot
-Upload a `.png` or `.jpg` of your app to the folder `assets/screenshot/`. The name does not matter. Be sure to delete the placeholder `yourscreenshot.png`.
+### 1. Cambiar Colores
 
-#### Adding video
-Upload your video to the folder `assets/videos/`. To have support for most browsers, you need to upload two files – one for Safari and one for Chrome/Firefox.
+**En `styles.css` (líneas 5-26):**
 
-Video formats supported by Chrome and Firefox:
-- `.webm`
-- `.ogg`
+```css
+:root {
+    --color-primary: #007aff;    /* Azul iOS → tu color */
+    --color-accent: #00d084;     /* Verde → tu color */
+    --color-text: #1a1a1a;
+    /* ... resto de variables ... */
+}
+```
 
-Video formats supported by Safari:
-- `.mp4`
-- `.mov`
+**Paletas rápidas:**
+- Startup: Primary: `#6c5ce7`, Accent: `#00b894`
+- Profesional: Primary: `#0066cc`, Accent: `#ff6b6b`
+- Minimalista: Primary: `#000000`, Accent: `#ffffff`
 
-#### Resolutions
-The videos and screenshots must have one of the following resolutions:
-- 828x1792
-- 1125x2436
-- 1242x2688
+### 2. Actualizar Información Personal
 
+**En `index.html`:**
+- Línea 17: Logo (`.logo`)
+- Línea 34-35: Hero title y descripción
+- Línea 78-88: Sección "Acerca de"
+- Línea 110-115: Email y redes sociales
 
+**En `privacy-policy.html`:**
+- Línea 143: Tu email
+- Línea 144-145: Tu dirección
 
-### Step 4: Edit (or remove) Privacy Policy and Changelog
-Your site automatically includes pages for a Privacy Policy and a Changelog. Change the content of these pages by editing the `privacypolicy.md` and `CHANGELOG.md` files in the `_pages` directory.
+### 3. Cambiar Tipografía
 
-In each of the markdown files, you can set the `include_in_header:` value to either `true` or `false`. This determines if the page is included in the top navigation.
-By default, only the Changelog is included in the top navigation. The title of the navigation item can also be edited, by editing the `title:` in each markdown file.
+El sitio usa system fonts de Apple (óptimo para velocidad). Para cambiar:
 
-If you need to, you can create additional markdown based pages just by creating an `.md` file like the `privacypolicy.md` and `CHANGELOG.md` files in the `_pages` directory.
+```css
+--font-system: 'Tu Font', -apple-system, ...;
+```
 
-**Please note:** The Privacy Policy and Changelog provided are written using dummy text, so please adapt each of them for your own app.
-You can also choose not to include these pages, by simple deleting the `privacypolicy.md` and `CHANGELOG.md` files.
+### 4. Screenshots Reales
 
+En lugar de placeholders, usa URLs reales:
 
+```javascript
+screenshots: [
+    {
+        url: 'https://tu-dominio.com/screenshot1.png',
+        caption: 'Pantalla principal'
+    }
+]
+```
 
+**Servicios para alojar imágenes:**
+- GitHub (en carpeta `assets/`)
+- Imgbb (gratuito, sin registro)
+- Cloudinary (free tier generoso)
 
-## Feedback
-If you have feedback regarding bugs or improvements, open an issue, @ me on Twitter or write me an email. You can find my contact info on my website.
+---
 
-I'd love to see the sites you create using this little tool.
+## Funcionalidades Detalladas
 
-## Credits
-- [Jekyll](https://github.com/jekyll/jekyll)
-- [FontAwesome](https://fontawesome.github.io/Font-Awesome/)
+### Portafolio Principal (`index.html`)
 
-## Donations
-[Donations are welcome](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=S8ZZT3JXJPN92&currency_code=USD&source=url)
+- Grid responsivo de apps
+- Animaciones sutiles al entrar en viewport
+- Navegación suave
+- Links a páginas individuales
+- Sección "Acerca de" con tech stack
 
-## Author
-[Emil Baehr](https://emilbaehr.com/)
+### Página de Detalle (`app-detail.html`)
 
-## License
-[MIT License](LICENSE)
+**Se carga dinámicamente según el ID:**
+```
+app-detail.html?id=recarga-ev
+```
+
+Incluye:
+- ✓ Información de la app
+- ✓ **Carrusel de screenshots** (swipe, botones, teclado)
+- ✓ Descripción detallada
+- ✓ Características principales
+- ✓ Especificaciones técnicas
+- ✓ Stack tecnológico
+- ✓ Apps relacionadas
+- ✓ Botón directo a App Store
+
+### Carrusel de Screenshots
+
+**Controles:**
+- Botones ← / → (prev/next)
+- Indicadores clickeables
+- Navegación por teclado (← →)
+- Smooth transitions
+
+### Política de Privacidad (`privacy-policy.html`)
+
+Página completa lista para App Store que incluye:
+- Información que recopilamos
+- Cómo usamos los datos
+- Seguridad
+- Derechos del usuario
+- Cumplimiento GDPR/CCPA
+- Resumen rápido visual
+
+**Personalizar:**
+- Línea 169-171: Email de contacto
+- Línea 172-173: Dirección física
+- Sección relevante para cada dato recopilado
+
+---
+
+## SEO y Metadatos
+
+Cada página tiene metadatos automáticos:
+
+```html
+<title>App Name - Aplicación iOS</title>
+<meta name="description" content="Descripción de data.js">
+```
+
+**Para mejorar SEO:**
+
+1. Agrega `sitemap.xml` (opcional para GitHub Pages)
+2. Verifica en Google Search Console
+3. Asegúrate de que los enlaces al App Store sean directos
+
+---
+
+## Dark Mode
+
+Automáticamente soporta dark mode:
+- Se activa si el sistema lo tiene habilitado
+- Los colores se adaptan automáticamente
+- Respeta `prefers-color-scheme`
+
+Forzar dark mode en desarrollo:
+```css
+html {
+    color-scheme: dark;
+}
+```
+
+---
+
+## Accesibilidad
+
+✓ Contraste suficiente en todos los textos  
+✓ Navegación por teclado (Tab, Enter, Arrow keys)  
+✓ Labels semánticos (`<button>`, `<nav>`, `<main>`)  
+✓ Respeta `prefers-reduced-motion`  
+✓ Imágenes alt text en carruseles  
+
+---
+
+## Performance
+
+- 📦 **0 dependencias externas**
+- ⚡ **Carga instantánea** (solo HTML/CSS/JS)
+- 🖼️ **Optimizar imágenes** para screenshots
+- 📱 **Mobile-first** design
+
+**Optimizaciones incluidas:**
+- CSS minificable (pero legible)
+- JavaScript puro sin librerías
+- Transiciones GPU-optimizadas
+- Lazy loading (navegador nativo)
+
+---
+
+## Troubleshooting
+
+### Las apps no aparecen en index.html
+
+✓ Asegúrate que `data.js` esté cargado antes de `script.js`  
+✓ Abre la consola (F12) y busca errores  
+✓ Verifica que `data.js` tenga sintaxis válida  
+
+### Carrusel no funciona
+
+✓ Verifica que `app-detail.js` esté cargado  
+✓ Comprueba que la app tenga `screenshots: []` en `data.js`  
+✓ Asegúrate que las URLs de imágenes sean válidas  
+
+### Política de privacidad no se ve bien
+
+✓ Personaliza los emails y direcciones  
+✓ Ajusta secciones que no apliquen a tu app  
+✓ Usa como template base, no como verdad absoluta  
+
+---
+
+## Próximos Pasos
+
+### Básicos
+- [ ] Agregar tu primera app en `data.js`
+- [ ] Actualizar email de contacto
+- [ ] Cambiar paleta de colores
+- [ ] Desplegar en GitHub Pages
+
+### Intermedios
+- [ ] Agregar más apps
+- [ ] Personalizar política de privacidad
+- [ ] Agregar favicon
+- [ ] Optimizar imágenes de screenshots
+
+### Avanzados
+- [ ] Formulario de contacto (Formspree.io)
+- [ ] Google Analytics (opcional)
+- [ ] Dominio personalizado
+- [ ] Localización a otros idiomas
+
+---
+
+## Ejemplos de URLs
+
+Una vez desplegado:
+
+```
+Home:              https://tu-usuario.github.io/mi-portafolio/
+App detail:        https://tu-usuario.github.io/mi-portafolio/app-detail.html?id=recarga-ev
+Privacy policy:    https://tu-usuario.github.io/mi-portafolio/privacy-policy.html
+```
+
+---
+
+## Licencia
+
+Libre para usar y modificar. Hecho con cuidado para desarrolladores independientes.
+
+## Créditos
+
+Diseño minimalista inspirado en iOS. Sin frameworks, sin dependencias, sin complicaciones.
+
+---
+
+¿Preguntas? Revisa los comentarios en el código. Cada sección está documentada.
+
+**¡Bienvenido a tu nuevo portafolio profesional! 🚀**
